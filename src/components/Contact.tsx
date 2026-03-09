@@ -6,7 +6,7 @@ const Contact: React.FC = () => {
     return (
         <section id="contact" className="contact-section">
             <div className="container">
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -19,7 +19,7 @@ const Contact: React.FC = () => {
                 </motion.div>
 
                 <div className="contact-grid">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -32,7 +32,7 @@ const Contact: React.FC = () => {
                             </div>
                             <div className="info-content">
                                 <h3>Location</h3>
-                                <p>123 Culinary Drive, Downtown<br />London, UK 12345</p>
+                                <p>Kabir nagar, Sahar cargo road,<br />opposite of Hotel Suba International,<br />Andheri East, Mumbai, Maharashtra 400099</p>
                             </div>
                         </div>
 
@@ -57,9 +57,21 @@ const Contact: React.FC = () => {
                                 <p>reservations@vrindavan.com</p>
                             </div>
                         </div>
+
+                        <div className="map-container">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3770.0394066132026!2d72.8553012!3d19.1059271!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9a3cabbeb99%3A0xf21d0501ca46b08d!2sVRINDAVAN%20KITCHEN%20AND%20BAR!5e0!3m2!1sen!2sin!4v1773056419167!5m2!1sen!2sin"
+                                width="100%"
+                                height="250"
+                                style={{ border: 0 }}
+                                allowFullScreen
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                            ></iframe>
+                        </div>
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -156,6 +168,12 @@ const Contact: React.FC = () => {
                 .info-content p {
                     color: var(--color-text-muted);
                     font-size: 0.95rem;
+                }
+                .map-container {
+                    margin-top: var(--spacing-lg);
+                    border: 1px solid rgba(229, 192, 88, 0.2);
+                    border-radius: 2px;
+                    overflow: hidden;
                 }
                 .contact-form {
                     display: flex;

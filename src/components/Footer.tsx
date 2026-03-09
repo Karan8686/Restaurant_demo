@@ -1,44 +1,44 @@
 import React from 'react';
 
 const Footer: React.FC = () => {
-    return (
-        <footer className="footer">
-            <div className="container">
-                <div className="footer-grid">
-                    <div className="footer-col brand">
-                        <h2 className="footer-logo">Vrindavan</h2>
-                        <p className="footer-tagline">Fine Indian Dining Since 1998</p>
-                        <div className="social-links">
-                            <a href="#" className="social-icon">IG</a>
-                            <a href="#" className="social-icon">FB</a>
-                            <a href="#" className="social-icon">TW</a>
-                        </div>
-                    </div>
-
-                    <div className="footer-col">
-                        <h3 className="footer-heading">Quick Links</h3>
-                        <ul className="footer-links">
-                            <li><a href="#menu">Our Menu</a></li>
-                            <li><a href="#about">About Us</a></li>
-                            <li><a href="#gallery">Gallery</a></li>
-                            <li><a href="#reservation">Reservations</a></li>
-                        </ul>
-                    </div>
-
-                    <div className="footer-col">
-                        <h3 className="footer-heading">Visit Us</h3>
-                        <p className="footer-info">123 Culinary Drive, Downtown</p>
-                        <p className="footer-info">Opening Hours: 11:00 AM - 11:00 PM</p>
-                        <p className="footer-info">Contact: +91 98765 43210</p>
-                    </div>
-                </div>
-
-                <div className="footer-bottom">
-                    <p>&copy; 2026 Vrindavan Kitchen & Bar. All rights reserved.</p>
-                </div>
+  return (
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-grid">
+          <div className="footer-col brand">
+            <h2 className="footer-logo">Vrindavan</h2>
+            <p className="footer-tagline">Fine Indian Dining Since 1998</p>
+            <div className="social-links">
+              <a href="#" className="social-icon">IG</a>
+              <a href="#" className="social-icon">FB</a>
+              <a href="#" className="social-icon">TW</a>
             </div>
+          </div>
 
-            <style>{`
+          <div className="footer-col">
+            <h3 className="footer-heading">Quick Links</h3>
+            <ul className="footer-links">
+              <li><a href="#menu">Our Menu</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+              <li><a href="#reservation">Reservations</a></li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h3 className="footer-heading">Visit Us</h3>
+            <p className="footer-info">Kabir nagar, Sahar cargo road, Andheri East, Mumbai</p>
+            <p className="footer-info">Opening Hours: 11:00 AM - 11:00 PM</p>
+            <p className="footer-info">Contact: +91 98765 43210</p>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <p>&copy; 2026 Vrindavan Kitchen & Bar. All rights reserved.</p>
+        </div>
+      </div>
+
+      <style>{`
         .footer {
           background-color: var(--color-bg);
           padding: var(--spacing-hero) 5% var(--spacing-lg);
@@ -124,8 +124,8 @@ const Footer: React.FC = () => {
           font-size: 0.85rem;
         }
       `}</style>
-        </footer>
-    );
+    </footer>
+  );
 };
 
 export default Footer;
