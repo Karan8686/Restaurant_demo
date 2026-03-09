@@ -202,25 +202,32 @@ const Contact: React.FC = () => {
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
                 .pin-dot {
-                    width: 12px;
-                    height: 12px;
-                    background-color: #E74C3C;
-                    border: 2px solid white;
+                    width: 48px;
+                    height: 48px;
+                    background-color: white;
                     border-radius: 50%;
                     position: relative;
                     z-index: 2;
-                    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+                }
+                .pin-dot::after {
+                    content: '📍'; /* Using an emoji or symbol to represent the ionicon */
+                    font-size: 24px;
+                    color: rgb(139, 30, 30);
                 }
                 .pin-pulse {
                     position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    width: 30px;
-                    height: 30px;
-                    background-color: rgba(231, 76, 60, 0.4);
+                    width: 80px;
+                    height: 80px;
+                    background-color: rgba(139, 30, 30, 0.3);
                     border-radius: 50%;
                     animation: pulse 2s infinite;
                 }
