@@ -1,4 +1,5 @@
 import About from './components/About';
+import Amenities from './components/Amenities';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Gallery from './components/Gallery';
@@ -22,6 +23,7 @@ function App() {
       <Navbar onScrollTo={scrollToSection} />
       <Hero />
       <div id="about"><About /></div>
+      <Amenities />
       <div id="gallery"><Gallery /></div>
       <div id="menu"><Menu /></div>
       <div id="reviews"><Reviews /></div>

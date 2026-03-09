@@ -73,7 +73,12 @@ const Contact: React.FC = () => {
                     >
                         <div className="map-image-container">
                             <img src={mapWorld} alt="World Map" className="world-map-img" />
-                            <div className="map-overlay-v2">
+                            <div
+                                className="map-overlay-v2"
+                                onClick={() => window.open('https://maps.app.goo.gl/dTFYvzA7KJ1DorbB9', '_blank')}
+                                style={{ cursor: 'pointer' }}
+                                title="Open in Google Maps"
+                            >
                                 <div className="pin-pulse-v2"></div>
                                 <div className="pin-circle-v2">
                                     <div className="pin-marker-inner"></div>
