@@ -1,4 +1,5 @@
 import About from './components/About';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Gallery from './components/Gallery';
 import Hero from './components/Hero';
@@ -24,6 +25,7 @@ function App() {
       <div id="gallery"><Gallery /></div>
       <div id="menu"><Menu /></div>
       <div id="reviews"><Reviews /></div>
+      <Contact />
       <Footer />
     </div>
   );
