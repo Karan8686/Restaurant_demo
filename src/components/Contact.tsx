@@ -1,97 +1,80 @@
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Clock, MapPin, Phone } from 'lucide-react';
 import React from 'react';
+import mapVintage from '../assets/map_vintage.png';
 
 const Contact: React.FC = () => {
     return (
         <section id="contact" className="contact-section">
-            <div className="container">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="section-header"
-                >
-                    <span className="section-subtitle">Get In Touch</span>
-                    <h2 className="section-title">Contact Us</h2>
-                    <div className="section-underline"></div>
-                </motion.div>
-
-                <div className="contact-grid">
+            <div className="contact-container">
+                <div className="contact-content-grid">
+                    {/* Left Column: Info */}
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
+                        initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="contact-info"
+                        transition={{ duration: 0.8 }}
+                        className="info-column"
                     >
-                        <div className="info-item">
-                            <div className="info-icon">
-                                <MapPin size={24} />
+                        <span className="visit-us">Visit Us</span>
+                        <h2 className="location-title">Location & Hours</h2>
+
+                        <div className="info-list">
+                            <div className="info-row">
+                                <div className="icon-box">
+                                    <MapPin size={20} />
+                                </div>
+                                <div className="text-box">
+                                    <h3>Address</h3>
+                                    <p>Kabir nagar, Sahar cargo road,</p>
+                                    <p>opposite of Hotel Suba International,</p>
+                                    <p>Andheri East, Mumbai, 400099</p>
+                                </div>
                             </div>
-                            <div className="info-content">
-                                <h3>Location</h3>
-                                <p>Kabir nagar, Sahar cargo road,<br />opposite of Hotel Suba International,<br />Andheri East, Mumbai, Maharashtra 400099</p>
+
+                            <div className="info-row">
+                                <div className="icon-box">
+                                    <Clock size={20} />
+                                </div>
+                                <div className="text-box">
+                                    <h3>Opening Hours</h3>
+                                    <p>Mon - Thu: 11:30 AM - 10:00 PM</p>
+                                    <p>Fri - Sun: 11:30 AM - 11:00 PM</p>
+                                </div>
+                            </div>
+
+                            <div className="info-row">
+                                <div className="icon-box">
+                                    <Phone size={20} />
+                                </div>
+                                <div className="text-box">
+                                    <h3>Contact</h3>
+                                    <p>+91 98765 43210</p>
+                                    <p>reservations@vrindavankitchen.com</p>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="info-item">
-                            <div className="info-icon">
-                                <Phone size={24} />
-                            </div>
-                            <div className="info-content">
-                                <h3>Phone</h3>
-                                <p>+91 98765 43210</p>
-                                <p>+91 98765 43211</p>
-                            </div>
-                        </div>
-
-                        <div className="info-item">
-                            <div className="info-icon">
-                                <Mail size={24} />
-                            </div>
-                            <div className="info-content">
-                                <h3>Email</h3>
-                                <p>info@vrindavan.com</p>
-                                <p>reservations@vrindavan.com</p>
-                            </div>
-                        </div>
-
-                        <div className="map-container">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3770.0394066132026!2d72.8553012!3d19.1059271!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9a3cabbeb99%3A0xf21d0501ca46b08d!2sVRINDAVAN%20KITCHEN%20AND%20BAR!5e0!3m2!1sen!2sin!4v1773056419167!5m2!1sen!2sin"
-                                width="100%"
-                                height="250"
-                                style={{ border: 0 }}
-                                allowFullScreen
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                            ></iframe>
-                        </div>
+                        <button className="directions-btn">
+                            Get Directions
+                        </button>
                     </motion.div>
 
+                    {/* Right Column: Map Image */}
                     <motion.div
-                        initial={{ opacity: 0, x: 30 }}
+                        initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        className="contact-form-container"
+                        transition={{ duration: 0.8 }}
+                        className="map-column"
                     >
-                        <form className="contact-form">
-                            <div className="form-group">
-                                <input type="text" placeholder="Your Name" required />
+                        <div className="map-image-wrapper">
+                            <img src={mapVintage} alt="Vintage Map" className="vintage-map" />
+                            <div className="map-pin-overlay">
+                                <div className="pin-pulse"></div>
+                                <div className="pin-dot"></div>
                             </div>
-                            <div className="form-group">
-                                <input type="email" placeholder="Your Email" required />
-                            </div>
-                            <div className="form-group">
-                                <textarea placeholder="Your Message" rows={5} required></textarea>
-                            </div>
-                            <button type="submit" className="submit-btn">
-                                Send Message
-                            </button>
-                        </form>
+                        </div>
                     </motion.div>
                 </div>
             </div>
@@ -99,117 +82,160 @@ const Contact: React.FC = () => {
             <style>{`
                 .contact-section {
                     padding: var(--spacing-hero) 5%;
-                    background-color: var(--color-bg);
+                    background-color: #120E0D; /* Slightly darker as per screenshot */
+                    min-height: 80vh;
+                    display: flex;
+                    align-items: center;
                 }
-                .container {
+                .contact-container {
                     max-width: 1200px;
                     margin: 0 auto;
+                    width: 100%;
                 }
-                .section-header {
-                    text-align: center;
-                    margin-bottom: var(--spacing-xxl);
-                }
-                .section-subtitle {
-                    color: var(--color-primary);
-                    text-transform: uppercase;
-                    letter-spacing: 3px;
-                    font-size: 0.9rem;
-                    display: block;
-                    margin-bottom: var(--spacing-sm);
-                }
-                .section-title {
-                    font-size: 3rem;
-                    color: var(--color-text);
-                }
-                .section-underline {
-                    width: 80px;
-                    height: 2px;
-                    background-color: var(--color-primary);
-                    margin: var(--spacing-md) auto 0;
-                }
-                .contact-grid {
+                .contact-content-grid {
                     display: grid;
-                    grid-template-columns: 1fr 1.5fr;
+                    grid-template-columns: 1fr 1.2fr;
                     gap: var(--spacing-xxl);
-                    align-items: start;
+                    align-items: center;
                 }
                 @media (max-width: 968px) {
-                    .contact-grid {
+                    .contact-content-grid {
                         grid-template-columns: 1fr;
+                        gap: var(--spacing-xl);
                     }
                 }
-                .contact-info {
+
+                /* Info Column */
+                .info-column {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .visit-us {
+                    color: var(--color-primary);
+                    text-transform: uppercase;
+                    letter-spacing: 4px;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                    margin-bottom: var(--spacing-sm);
+                }
+                .location-title {
+                    font-family: var(--font-heading);
+                    font-size: clamp(2.5rem, 4vw, 3.5rem);
+                    color: var(--color-text);
+                    margin-bottom: var(--spacing-xxl);
+                    line-height: 1.1;
+                }
+                .info-list {
                     display: flex;
                     flex-direction: column;
                     gap: var(--spacing-xl);
+                    margin-bottom: var(--spacing-xxl);
                 }
-                .info-item {
+                .info-row {
                     display: flex;
                     gap: var(--spacing-lg);
-                    align-items: flex-start;
                 }
-                .info-icon {
-                    width: 50px;
-                    height: 50px;
-                    background: rgba(229, 192, 88, 0.1);
-                    border: 1px solid rgba(229, 192, 88, 0.2);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
+                .icon-box {
                     color: var(--color-primary);
-                    border-radius: 2px;
+                    margin-top: 4px;
                 }
-                .info-content h3 {
-                    font-family: var(--font-heading);
-                    color: var(--color-primary);
-                    font-size: 1.5rem;
+                .text-box h3 {
+                    font-family: var(--font-body);
+                    color: var(--color-text);
+                    font-size: 1.1rem;
                     margin-bottom: var(--spacing-xs);
+                    font-weight: 600;
                 }
-                .info-content p {
+                .text-box p {
                     color: var(--color-text-muted);
                     font-size: 0.95rem;
+                    line-height: 1.6;
                 }
-                .map-container {
-                    margin-top: var(--spacing-lg);
-                    border: 1px solid rgba(229, 192, 88, 0.2);
-                    border-radius: 2px;
-                    overflow: hidden;
-                }
-                .contact-form {
-                    display: flex;
-                    flex-direction: column;
-                    gap: var(--spacing-lg);
-                }
-                .form-group input, .form-group textarea {
-                    width: 100%;
-                    padding: var(--spacing-lg);
-                    background: var(--color-surface);
-                    border: 1px solid rgba(229, 192, 88, 0.1);
-                    color: var(--color-text);
-                    font-family: var(--font-body);
-                    border-radius: 2px;
-                    transition: var(--transition-smooth);
-                }
-                .form-group input:focus, .form-group textarea:focus {
-                    outline: none;
-                    border-color: var(--color-primary);
-                    box-shadow: 0 0 10px rgba(229, 192, 88, 0.1);
-                }
-                .submit-btn {
-                    padding: var(--spacing-lg) var(--spacing-xxl);
-                    background: transparent;
+
+                .directions-btn {
+                    width: fit-content;
+                    padding: var(--spacing-md) var(--spacing-xl);
                     border: 1px solid var(--color-primary);
                     color: var(--color-primary);
+                    background: transparent;
                     text-transform: uppercase;
                     letter-spacing: 2px;
+                    font-size: 0.9rem;
                     font-weight: 600;
                     transition: var(--transition-smooth);
-                    border-radius: 2px;
-                    align-self: flex-start;
+                    cursor: pointer;
                 }
-                .submit-btn:hover {
+                .directions-btn:hover {
                     background: var(--color-primary);
-                    color: var(--color-bg);
+                    color: #120E0D;
+                    box-shadow: 0 0 15px rgba(229, 192, 88, 0.2);
+                }
+
+                /* Map Column */
+                .map-column {
+                    width: 100%;
+                }
+                .map-image-wrapper {
+                    position: relative;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+                    background-color: #211814;
+                }
+                .vintage-map {
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                    filter: brightness(0.8) contrast(1.1) sepia(0.2);
+                    transition: transform 0.5s ease;
+                }
+                .map-image-wrapper:hover .vintage-map {
+                    transform: scale(1.02);
+                }
+
+                /* Pin Overlay */
+                .map-pin-overlay {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+                .pin-dot {
+                    width: 12px;
+                    height: 12px;
+                    background-color: #E74C3C;
+                    border: 2px solid white;
+                    border-radius: 50%;
+                    position: relative;
+                    z-index: 2;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+                }
+                .pin-pulse {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 30px;
+                    height: 30px;
+                    background-color: rgba(231, 76, 60, 0.4);
+                    border-radius: 50%;
+                    animation: pulse 2s infinite;
+                }
+                @keyframes pulse {
+                    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+                    100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+                }
+
+                /* Subtle glare effect on map */
+                .map-image-wrapper::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%);
+                    pointer-events: none;
                 }
             `}</style>
         </section>
