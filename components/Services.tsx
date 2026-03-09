@@ -25,7 +25,7 @@ export default function Services() {
 
             <View style={styles.grid}>
                 {SERVICES.map((service) => (
-                    <View key={service.id} style={[styles.card, isMobile && { width: '45%' }]}>
+                    <View key={service.id} style={[styles.card, isMobile && { width: '45%', aspectRatio: 1.2 }]}>
                         <View style={styles.iconContainer}>
                             <Ionicons name={service.icon as any} size={28} color={Colors.primary} />
                         </View>
@@ -49,46 +49,53 @@ const styles = StyleSheet.create({
         color: Colors.primary,
         fontSize: Typography.fontSize.sm,
         textTransform: 'uppercase',
-        letterSpacing: 2,
+        letterSpacing: 3,
         marginBottom: Spacing.sm,
     },
     heading: {
         fontFamily: Typography.fontFamily.heading,
         color: Colors.text,
         fontSize: Typography.fontSize.xxl,
-        marginBottom: Spacing.xl,
+        marginBottom: Spacing.xl * 1.5,
     },
     grid: {
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        gap: Spacing.md,
+        gap: Spacing.lg,
         maxWidth: 900,
     },
     card: {
-        width: 150,
-        aspectRatio: 1,
+        width: 160,
+        aspectRatio: 1.1,
         backgroundColor: Colors.surface,
-        borderRadius: 8,
+        borderRadius: 4,
         alignItems: 'center',
         justifyContent: 'center',
         padding: Spacing.md,
         borderWidth: 1,
-        borderColor: 'rgba(212, 175, 55, 0.05)',
+        borderColor: 'rgba(224, 181, 77, 0.1)',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
     },
     iconContainer: {
-        width: 56,
-        height: 56,
-        borderRadius: 28,
-        backgroundColor: 'rgba(212, 175, 55, 0.1)',
+        width: 64,
+        height: 64,
+        borderRadius: 32,
+        backgroundColor: 'rgba(224, 181, 77, 0.05)',
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: Spacing.md,
+        marginBottom: Spacing.lg,
+        borderWidth: 1,
+        borderColor: 'rgba(224, 181, 77, 0.2)',
     },
     label: {
         fontFamily: Typography.fontFamily.bodyMedium,
         color: Colors.text,
         fontSize: Typography.fontSize.sm,
         textAlign: 'center',
+        letterSpacing: 1,
     },
 });

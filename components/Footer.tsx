@@ -21,18 +21,20 @@ export default function Footer() {
                     </View>
                 </View>
 
-                <View style={styles.column}>
-                    <Text style={styles.heading}>Quick Links</Text>
-                    <Pressable><Text style={styles.link}>Our Menu</Text></Pressable>
-                    <Pressable><Text style={styles.link}>Make a Reservation</Text></Pressable>
-                    <Pressable><Text style={styles.link}>Private Dining</Text></Pressable>
-                    <Pressable><Text style={styles.link}>About Us</Text></Pressable>
-                    <Pressable><Text style={styles.link}>Contact</Text></Pressable>
+                <View style={[styles.column, { alignItems: isMobile ? 'flex-start' : 'center' }]}>
+                    <View>
+                        <Text style={styles.heading}>Quick Links</Text>
+                        <Pressable><Text style={styles.link}>Our Menu</Text></Pressable>
+                        <Pressable><Text style={styles.link}>Make a Reservation</Text></Pressable>
+                        <Pressable><Text style={styles.link}>Private Dining</Text></Pressable>
+                        <Pressable><Text style={styles.link}>About Us</Text></Pressable>
+                        <Pressable><Text style={styles.link}>Contact</Text></Pressable>
+                    </View>
                 </View>
 
                 <View style={styles.column}>
                     <Text style={styles.heading}>Newsletter</Text>
-                    <Text style={styles.link}>Subscribe to receive updates, access to exclusive deals, and more.</Text>
+                    <Text style={styles.newsletterText}>Subscribe to receive updates, access to exclusive deals, and more.</Text>
                     <View style={styles.inputContainer}>
                         <Text style={styles.inputPlaceholder}>Enter your email address</Text>
                         <Pressable style={styles.subscribeBtn}>
@@ -60,17 +62,17 @@ const styles = StyleSheet.create({
         paddingTop: Spacing.hero,
         paddingHorizontal: '10%',
         borderTopWidth: 1,
-        borderTopColor: 'rgba(212, 175, 55, 0.1)',
+        borderTopColor: 'rgba(224, 181, 77, 0.15)',
     },
     grid: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        gap: Spacing.xl,
+        gap: Spacing.xxl,
         paddingBottom: Spacing.hero,
     },
     gridMobile: {
         flexDirection: 'column',
-        gap: Spacing.xxl,
+        gap: Spacing.hero,
     },
     column: {
         flex: 1,
@@ -79,57 +81,67 @@ const styles = StyleSheet.create({
     logo: {
         fontFamily: Typography.fontFamily.heading,
         color: Colors.primary,
-        fontSize: Typography.fontSize.xl,
+        fontSize: Typography.fontSize.xxl,
         letterSpacing: 2,
-        textTransform: 'uppercase',
-        marginBottom: Spacing.md,
+        marginBottom: Spacing.sm,
     },
     tagline: {
         fontFamily: Typography.fontFamily.body,
         color: Colors.textMuted,
         fontSize: Typography.fontSize.sm,
-        lineHeight: 20,
-        marginBottom: Spacing.lg,
+        lineHeight: 24,
+        marginBottom: Spacing.xl,
+        letterSpacing: 0.5,
     },
     socials: {
         flexDirection: 'row',
         gap: Spacing.md,
     },
     socialIcon: {
-        width: 40,
-        height: 40,
-        borderRadius: 20,
+        width: 44,
+        height: 44,
+        borderRadius: 22,
         borderWidth: 1,
-        borderColor: 'rgba(212, 175, 55, 0.3)',
+        borderColor: 'rgba(224, 181, 77, 0.3)',
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: 'rgba(224, 181, 77, 0.05)',
     },
     heading: {
         fontFamily: Typography.fontFamily.heading,
         color: Colors.text,
-        fontSize: Typography.fontSize.lg,
+        fontSize: Typography.fontSize.xl,
         marginBottom: Spacing.lg,
     },
     link: {
         fontFamily: Typography.fontFamily.body,
         color: Colors.textMuted,
-        fontSize: Typography.fontSize.sm,
+        fontSize: Typography.fontSize.base,
         marginBottom: Spacing.md,
-        lineHeight: 20,
+        lineHeight: 24,
+        letterSpacing: 0.5,
+    },
+    newsletterText: {
+        fontFamily: Typography.fontFamily.body,
+        color: Colors.textMuted,
+        fontSize: Typography.fontSize.sm,
+        marginBottom: Spacing.xl,
+        lineHeight: 24,
+        letterSpacing: 0.5,
     },
     inputContainer: {
         flexDirection: 'row',
         borderBottomWidth: 1,
-        borderBottomColor: 'rgba(212, 175, 55, 0.5)',
-        paddingBottom: Spacing.xs,
-        marginTop: Spacing.md,
+        borderBottomColor: 'rgba(224, 181, 77, 0.5)',
+        paddingBottom: Spacing.sm,
         alignItems: 'center',
         justifyContent: 'space-between',
     },
     inputPlaceholder: {
         fontFamily: Typography.fontFamily.body,
-        color: 'rgba(253, 251, 247, 0.3)',
-        fontSize: Typography.fontSize.sm,
+        color: 'rgba(253, 251, 247, 0.4)',
+        fontSize: Typography.fontSize.base,
+        letterSpacing: 0.5,
     },
     subscribeBtn: {
         padding: Spacing.xs,
@@ -137,32 +149,34 @@ const styles = StyleSheet.create({
     subscribeText: {
         fontFamily: Typography.fontFamily.bodyMedium,
         color: Colors.primary,
-        fontSize: Typography.fontSize.xs,
+        fontSize: Typography.fontSize.sm,
         textTransform: 'uppercase',
-        letterSpacing: 1,
+        letterSpacing: 2,
     },
     bottomBar: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingVertical: Spacing.lg,
+        paddingVertical: Spacing.xl,
         borderTopWidth: 1,
-        borderTopColor: 'rgba(212, 175, 55, 0.1)',
+        borderTopColor: 'rgba(224, 181, 77, 0.1)',
         flexWrap: 'wrap',
-        gap: Spacing.sm,
+        gap: Spacing.md,
     },
     copyright: {
         fontFamily: Typography.fontFamily.body,
         color: Colors.textMuted,
-        fontSize: Typography.fontSize.xs,
+        fontSize: Typography.fontSize.sm,
+        letterSpacing: 0.5,
     },
     bottomLinks: {
         flexDirection: 'row',
-        gap: Spacing.lg,
+        gap: Spacing.xl,
     },
     bottomLink: {
-        fontFamily: Typography.fontFamily.body,
+        fontFamily: Typography.fontFamily.bodyMedium,
         color: Colors.textMuted,
-        fontSize: Typography.fontSize.xs,
+        fontSize: Typography.fontSize.sm,
+        letterSpacing: 0.5,
     },
 });

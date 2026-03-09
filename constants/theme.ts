@@ -1,18 +1,18 @@
 export const Colors = {
-  background: '#1A1412', // Dark brown / charcoal
-  surface: '#2C2420',   // Slightly lighter brown for cards
-  primary: '#D4AF37',    // Gold accent
-  text: '#FDFBF7',       // Cream text on dark background
-  textMuted: '#AFA39B',
-  accent: '#800000',     // Warm maroon
+  background: '#120E0D', // Deeper rich dark brown/charcoal
+  surface: '#1F1815',    // Slightly raised surface color
+  primary: '#E0B54D',    // Richer gold accent
+  text: '#FDFCF8',       // Cream text
+  textMuted: '#B3AAA3',  // Softer muted text
+  accent: '#8B1E1E',     // Deeper, richer maroon
 };
 
 export const Typography = {
   fontFamily: {
-    heading: 'PlayfairDisplay_700Bold',
-    subheading: 'PlayfairDisplay_600SemiBold',
-    body: 'Inter_400Regular',
-    bodyMedium: 'Inter_500Medium',
+    heading: 'CormorantGaramond_700Bold',
+    subheading: 'CormorantGaramond_600SemiBold',
+    body: 'Montserrat_400Regular',
+    bodyMedium: 'Montserrat_500Medium',
   },
   fontSize: {
     xs: 12,
@@ -20,8 +20,8 @@ export const Typography = {
     base: 16,
     lg: 20,
     xl: 24,
-    xxl: 32,
-    hero: 56,
+    xxl: 36, // Slightly larger base heading
+    hero: 64, // Larger hero text for impact
   },
 };
 
@@ -32,5 +32,5 @@ export const Spacing = {
   lg: 24,
   xl: 32,
   xxl: 48,
-  hero: 80,
+  hero: 96, // Increased global section spacing
 };

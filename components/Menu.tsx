@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Image, Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import { Colors, Spacing, Typography } from '../constants/theme';
+import HoverImage from './HoverImage';
 
 const MENU_CATEGORIES = ['South Indian Special', 'Veg Special', 'Paneer Dishes', 'Starters', 'Tandoori Dishes'];
 
@@ -50,11 +51,10 @@ function MenuCard({ item }: { item: any }) {
             onHoverOut={() => { scale.value = withSpring(1); }}
         >
             <Animated.View style={[styles.card, animatedStyle]}>
-                <Image source={{ uri: item.img }} style={styles.cardImage} />
+                <HoverImage source={{ uri: item.img }} containerStyle={styles.cardImage as any} />
                 <View style={styles.cardContent}>
                     <View style={styles.cardHeader}>
                         <Text style={styles.cardTitle}>{item.name}</Text>
-                        <View style={styles.dottedLine} />
                         <Text style={styles.cardPrice}>{item.price}</Text>
                     </View>
                     <Text style={styles.cardDesc}>{item.desc}</Text>
@@ -68,6 +68,7 @@ export default function Menu() {
     const { width } = useWindowDimensions();
     const isMobile = width < 768;
     const [activeCategory, setActiveCategory] = useState(MENU_CATEGORIES[0]);
+    const [isBtnHovered, setIsBtnHovered] = useState(false);
 
     const filteredItems = MENU_ITEMS.filter(item => item.category === activeCategory);
 
@@ -99,8 +100,12 @@ export default function Menu() {
                 ))}
             </View>
 
-            <Pressable style={styles.viewAllBtn}>
-                <Text style={styles.viewAllText}>View Full Menu</Text>
+            <Pressable
+                style={[styles.viewAllBtn, isBtnHovered && { backgroundColor: Colors.primary }]}
+                onHoverIn={() => setIsBtnHovered(true)}
+                onHoverOut={() => setIsBtnHovered(false)}
+            >
+                <Text style={[styles.viewAllText, isBtnHovered && { color: Colors.background }]}>View Full Menu</Text>
             </Pressable>
         </View>
     );
@@ -118,14 +123,14 @@ const styles = StyleSheet.create({
         color: Colors.primary,
         fontSize: Typography.fontSize.sm,
         textTransform: 'uppercase',
-        letterSpacing: 2,
+        letterSpacing: 3,
         marginBottom: Spacing.sm,
     },
     heading: {
         fontFamily: Typography.fontFamily.heading,
         color: Colors.text,
         fontSize: Typography.fontSize.xxl,
-        marginBottom: Spacing.xl,
+        marginBottom: Spacing.xl * 1.5,
     },
     categoryScroll: {
         paddingBottom: Spacing.md,
@@ -136,15 +141,16 @@ const styles = StyleSheet.create({
         fontFamily: Typography.fontFamily.bodyMedium,
         color: Colors.textMuted,
         fontSize: Typography.fontSize.base,
-        letterSpacing: 1,
+        letterSpacing: 2,
+        textTransform: 'uppercase',
     },
     activeCategoryText: {
         color: Colors.primary,
     },
     activeIndicator: {
-        height: 2,
+        height: 1,
         backgroundColor: Colors.primary,
-        marginTop: 4,
+        marginTop: 8,
         width: '100%',
     },
     grid: {
@@ -162,14 +168,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: Spacing.lg,
         backgroundColor: Colors.background,
-        borderRadius: 8,
-        padding: Spacing.sm,
+        borderRadius: 4,
+        padding: Spacing.md,
+        borderWidth: 1,
+        borderColor: 'rgba(224, 181, 77, 0.1)',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
     },
     cardImage: {
         width: 80,
         height: 80,
         borderRadius: 40,
-        marginRight: Spacing.md,
+        marginRight: Spacing.lg,
+        borderWidth: 2,
+        borderColor: Colors.primary,
     },
     cardContent: {
         flex: 1,
@@ -177,44 +191,42 @@ const styles = StyleSheet.create({
     cardHeader: {
         flexDirection: 'row',
         alignItems: 'baseline',
-        marginBottom: 4,
+        justifyContent: 'space-between',
+        marginBottom: 8,
+        borderBottomWidth: 1,
+        borderBottomColor: 'rgba(224, 181, 77, 0.15)',
+        paddingBottom: 4,
     },
     cardTitle: {
         fontFamily: Typography.fontFamily.heading,
         color: Colors.text,
         fontSize: Typography.fontSize.lg,
-    },
-    dottedLine: {
         flex: 1,
-        borderBottomWidth: 1,
-        borderBottomColor: 'rgba(212, 175, 55, 0.3)',
-        borderStyle: 'dashed',
-        marginHorizontal: Spacing.sm,
-        marginBottom: 6,
+        paddingRight: Spacing.sm,
     },
     cardPrice: {
-        fontFamily: Typography.fontFamily.bodyMedium,
+        fontFamily: Typography.fontFamily.heading,
         color: Colors.primary,
-        fontSize: Typography.fontSize.lg,
+        fontSize: Typography.fontSize.xl,
     },
     cardDesc: {
         fontFamily: Typography.fontFamily.body,
         color: Colors.textMuted,
         fontSize: Typography.fontSize.sm,
-        lineHeight: 20,
+        lineHeight: 22,
     },
     viewAllBtn: {
-        marginTop: Spacing.xl,
+        marginTop: Spacing.xxl,
         borderWidth: 1,
         borderColor: Colors.primary,
-        paddingVertical: Spacing.sm,
+        paddingVertical: Spacing.md,
         paddingHorizontal: Spacing.xl,
-        borderRadius: 4,
+        borderRadius: 2,
     },
     viewAllText: {
         fontFamily: Typography.fontFamily.bodyMedium,
         color: Colors.primary,
         textTransform: 'uppercase',
-        letterSpacing: 1,
+        letterSpacing: 2,
     },
 });

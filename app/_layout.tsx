@@ -1,5 +1,5 @@
-import { Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/inter';
-import { PlayfairDisplay_600SemiBold, PlayfairDisplay_700Bold, useFonts } from '@expo-google-fonts/playfair-display';
+import { CormorantGaramond_600SemiBold, CormorantGaramond_700Bold, useFonts } from '@expo-google-fonts/cormorant-garamond';
+import { Montserrat_400Regular, Montserrat_500Medium } from '@expo-google-fonts/montserrat';
 import { DarkTheme, ThemeProvider } from '@react-navigation/native';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -11,10 +11,10 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded] = useFonts({
-    PlayfairDisplay_700Bold,
-    PlayfairDisplay_600SemiBold,
-    Inter_400Regular,
-    Inter_500Medium,
+    CormorantGaramond_700Bold,
+    CormorantGaramond_600SemiBold,
+    Montserrat_400Regular,
+    Montserrat_500Medium,
   });
 
   useEffect(() => {

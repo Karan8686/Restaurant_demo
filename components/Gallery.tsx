@@ -1,7 +1,8 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { Image, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { Colors, Spacing, Typography } from '../constants/theme';
+import HoverImage from './HoverImage';
 
 const GALLERY_IMAGES = [
     'https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1000&auto=format&fit=crop', // Restaurant Interior
@@ -21,18 +22,18 @@ export default function Gallery() {
 
             <View style={[styles.grid, isMobile && styles.gridMobile]}>
                 <View style={[styles.column, isMobile && { width: '100%' }]}>
-                    <Image source={{ uri: GALLERY_IMAGES[0] }} style={[styles.image, { height: 400 }]} />
-                    <Image source={{ uri: GALLERY_IMAGES[1] }} style={[styles.image, { height: 250 }]} />
+                    <HoverImage source={{ uri: GALLERY_IMAGES[0] }} containerStyle={[styles.image, { height: 400 }]} />
+                    <HoverImage source={{ uri: GALLERY_IMAGES[1] }} containerStyle={[styles.image, { height: 250 }]} />
                 </View>
 
                 <View style={[styles.column, isMobile && { width: '100%' }]}>
-                    <Image source={{ uri: GALLERY_IMAGES[2] }} style={[styles.image, { height: 250 }]} />
-                    <Image source={{ uri: GALLERY_IMAGES[3] }} style={[styles.image, { height: 400 }]} />
+                    <HoverImage source={{ uri: GALLERY_IMAGES[2] }} containerStyle={[styles.image, { height: 250 }]} />
+                    <HoverImage source={{ uri: GALLERY_IMAGES[3] }} containerStyle={[styles.image, { height: 400 }]} />
                 </View>
             </View>
 
             <Pressable style={styles.instagramBtn}>
-                <Ionicons name="logo-instagram" size={20} color={Colors.text} style={{ marginRight: 8 }} />
+                <Ionicons name="logo-instagram" size={20} color={Colors.primary} style={{ marginRight: 8 }} />
                 <Text style={styles.instagramText}>Follow us on Instagram</Text>
             </Pressable>
         </View>
@@ -51,41 +52,46 @@ const styles = StyleSheet.create({
         color: Colors.primary,
         fontSize: Typography.fontSize.sm,
         textTransform: 'uppercase',
-        letterSpacing: 2,
+        letterSpacing: 3,
         marginBottom: Spacing.sm,
     },
     heading: {
         fontFamily: Typography.fontFamily.heading,
         color: Colors.text,
         fontSize: Typography.fontSize.xxl,
-        marginBottom: Spacing.xl,
+        marginBottom: Spacing.xl * 1.5,
     },
     grid: {
         flexDirection: 'row',
         width: '100%',
-        gap: Spacing.md,
+        gap: Spacing.lg,
     },
     gridMobile: {
         flexDirection: 'column',
     },
     column: {
         flex: 1,
-        gap: Spacing.md,
+        gap: Spacing.lg,
     },
     image: {
         width: '100%',
-        borderRadius: 8,
+        borderRadius: 4,
+        borderWidth: 1,
+        borderColor: 'rgba(224, 181, 77, 0.1)',
     },
     instagramBtn: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: Spacing.xl,
+        marginTop: Spacing.xxl,
         paddingVertical: Spacing.sm,
+        borderBottomWidth: 1,
+        borderBottomColor: Colors.primary,
     },
     instagramText: {
         fontFamily: Typography.fontFamily.bodyMedium,
-        color: Colors.text,
+        color: Colors.primary,
         fontSize: Typography.fontSize.base,
-        letterSpacing: 1,
+        letterSpacing: 2,
+        textTransform: 'uppercase',
     },
 });
