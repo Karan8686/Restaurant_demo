@@ -16,7 +16,7 @@ const Navbar: React.FC<NavbarProps> = ({ onScrollTo }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const links = ['Menu', 'Gallery', 'About', 'Reviews', 'Contact'];
+  const links = ['Home', 'Menu', 'Gallery', 'About', 'Contact'];
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>

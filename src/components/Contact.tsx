@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion';
 import { Clock, MapPin, Phone } from 'lucide-react';
 import React from 'react';
-import mapVintage from '../assets/map_vintage.png';
+import mapWorld from '../assets/map_world_dots.png';
 
 const Contact: React.FC = () => {
     return (
         <section id="contact" className="contact-section">
             <div className="contact-container">
                 <div className="contact-content-grid">
-                    {/* Left Column: Info */}
+                    {/* Left Column: Info (40%) */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -22,7 +22,7 @@ const Contact: React.FC = () => {
                         <div className="info-list">
                             <div className="info-row">
                                 <div className="icon-box">
-                                    <MapPin size={20} />
+                                    <MapPin size={24} />
                                 </div>
                                 <div className="text-box">
                                     <h3>Address</h3>
@@ -34,7 +34,7 @@ const Contact: React.FC = () => {
 
                             <div className="info-row">
                                 <div className="icon-box">
-                                    <Clock size={20} />
+                                    <Clock size={24} />
                                 </div>
                                 <div className="text-box">
                                     <h3>Opening Hours</h3>
@@ -45,7 +45,7 @@ const Contact: React.FC = () => {
 
                             <div className="info-row">
                                 <div className="icon-box">
-                                    <Phone size={20} />
+                                    <Phone size={24} />
                                 </div>
                                 <div className="text-box">
                                     <h3>Contact</h3>
@@ -63,7 +63,7 @@ const Contact: React.FC = () => {
                         </button>
                     </motion.div>
 
-                    {/* Right Column: Map Image */}
+                    {/* Right Column: Map Image (60%) */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -71,11 +71,13 @@ const Contact: React.FC = () => {
                         transition={{ duration: 0.8 }}
                         className="map-column"
                     >
-                        <div className="map-image-wrapper">
-                            <img src={mapVintage} alt="Vintage Map" className="vintage-map" />
-                            <div className="map-pin-overlay">
-                                <div className="pin-pulse"></div>
-                                <div className="pin-dot"></div>
+                        <div className="map-image-container">
+                            <img src={mapWorld} alt="World Map" className="world-map-img" />
+                            <div className="map-overlay-v2">
+                                <div className="pin-pulse-v2"></div>
+                                <div className="pin-circle-v2">
+                                    <div className="pin-marker-inner"></div>
+                                </div>
                             </div>
                         </div>
                     </motion.div>
@@ -84,167 +86,176 @@ const Contact: React.FC = () => {
 
             <style>{`
                 .contact-section {
-                    padding: var(--spacing-hero) 5%;
-                    background-color: #120E0D; /* Slightly darker as per screenshot */
-                    min-height: 80vh;
+                    padding: 100px 5%;
+                    background-color: #1A1412; /* Exact color from ref */
+                    overflow: hidden;
                     display: flex;
                     align-items: center;
+                    min-height: 90vh;
                 }
                 .contact-container {
-                    max-width: 1200px;
+                    max-width: 1400px;
                     margin: 0 auto;
                     width: 100%;
                 }
                 .contact-content-grid {
                     display: grid;
-                    grid-template-columns: 1fr 1.2fr;
-                    gap: var(--spacing-xxl);
+                    grid-template-columns: 0.4fr 0.6fr; /* 40/60 ratio */
+                    gap: 80px;
                     align-items: center;
                 }
-                @media (max-width: 968px) {
+                @media (max-width: 1100px) {
                     .contact-content-grid {
                         grid-template-columns: 1fr;
-                        gap: var(--spacing-xl);
+                        gap: 60px;
+                    }
+                    .contact-section {
+                        padding: 60px 5%;
                     }
                 }
 
-                /* Info Column */
+                /* Info Sidebar */
                 .info-column {
                     display: flex;
                     flex-direction: column;
                 }
                 .visit-us {
-                    color: var(--color-primary);
+                    color: #E5C058;
                     text-transform: uppercase;
                     letter-spacing: 4px;
-                    font-size: 0.85rem;
-                    font-weight: 600;
-                    margin-bottom: var(--spacing-sm);
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    margin-bottom: 12px;
                 }
                 .location-title {
-                    font-family: var(--font-heading);
-                    font-size: clamp(2.5rem, 4vw, 3.5rem);
-                    color: var(--color-text);
-                    margin-bottom: var(--spacing-xxl);
+                    font-family: 'Playfair Display', serif;
+                    font-size: clamp(2.5rem, 5vw, 4rem);
+                    color: #FFFFFF;
+                    margin-bottom: 48px;
                     line-height: 1.1;
+                    font-weight: 700;
                 }
                 .info-list {
                     display: flex;
                     flex-direction: column;
-                    gap: var(--spacing-xl);
-                    margin-bottom: var(--spacing-xxl);
+                    gap: 32px;
+                    margin-bottom: 48px;
                 }
                 .info-row {
                     display: flex;
-                    gap: var(--spacing-lg);
+                    gap: 20px;
                 }
                 .icon-box {
-                    color: var(--color-primary);
-                    margin-top: 4px;
+                    color: #E5C058;
+                    display: flex;
+                    align-items: flex-start;
+                    padding-top: 4px;
                 }
                 .text-box h3 {
-                    font-family: var(--font-body);
-                    color: var(--color-text);
-                    font-size: 1.1rem;
-                    margin-bottom: var(--spacing-xs);
+                    color: #FFFFFF;
+                    font-size: 1.25rem;
+                    margin-bottom: 8px;
+                    font-family: 'Playfair Display', serif;
                     font-weight: 600;
                 }
                 .text-box p {
-                    color: var(--color-text-muted);
-                    font-size: 0.95rem;
+                    color: rgba(255,255,255,0.7);
+                    font-size: 1rem;
                     line-height: 1.6;
+                    font-family: 'Inter', sans-serif;
                 }
 
                 .directions-btn {
                     width: fit-content;
-                    padding: var(--spacing-md) var(--spacing-xl);
-                    border: 1px solid var(--color-primary);
-                    color: var(--color-primary);
+                    padding: 14px 36px;
+                    border: 1px solid #E5C058;
+                    color: #E5C058;
                     background: transparent;
                     text-transform: uppercase;
                     letter-spacing: 2px;
-                    font-size: 0.9rem;
+                    font-size: 0.85rem;
                     font-weight: 600;
-                    transition: var(--transition-smooth);
+                    transition: all 0.4s ease;
                     cursor: pointer;
+                    border-radius: 4px;
                 }
                 .directions-btn:hover {
-                    background: var(--color-primary);
-                    color: #120E0D;
-                    box-shadow: 0 0 15px rgba(229, 192, 88, 0.2);
+                    background: #E5C058;
+                    color: #1A1412;
+                    box-shadow: 0 10px 20px rgba(229, 192, 88, 0.15);
                 }
 
-                /* Map Column */
+                /* Map Area */
                 .map-column {
-                    width: 100%;
-                }
-                .map-image-wrapper {
                     position: relative;
-                    border-radius: 8px;
-                    overflow: hidden;
-                    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-                    background-color: #211814;
                 }
-                .vintage-map {
+                .map-image-container {
+                    position: relative;
                     width: 100%;
-                    height: auto;
-                    display: block;
-                    filter: brightness(0.8) contrast(1.1) sepia(0.2);
-                    transition: transform 0.5s ease;
+                    aspect-ratio: 1.5;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+                    background-color: #1A1412;
                 }
-                .map-image-wrapper:hover .vintage-map {
-                    transform: scale(1.02);
+                .world-map-img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    opacity: 0.9;
+                    filter: saturate(0.8) contrast(1.1);
                 }
 
-                /* Pin Overlay */
-                .map-pin-overlay {
+                /* Modern Pin Overlay */
+                .map-overlay-v2 {
                     position: absolute;
-                    top: 50%;
-                    left: 50%;
+                    top: 55%; /* Adjusted for Mumbai approx position */
+                    left: 65%;
                     transform: translate(-50%, -50%);
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    z-index: 10;
                 }
-                .pin-dot {
-                    width: 48px;
-                    height: 48px;
-                    background-color: white;
+                .pin-circle-v2 {
+                    width: 60px;
+                    height: 60px;
+                    background: rgba(255, 255, 255, 0.95);
                     border-radius: 50%;
-                    position: relative;
-                    z-index: 2;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+                    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+                    position: relative;
+                    z-index: 2;
                 }
-                .pin-dot::after {
-                    content: '📍'; /* Using an emoji or symbol to represent the ionicon */
-                    font-size: 24px;
-                    color: rgb(139, 30, 30);
+                .pin-marker-inner {
+                    width: 28px;
+                    height: 28px;
+                    background-color: #B22222; /* Deep red marker */
+                    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'%3E%3C/path%3E%3Ccircle cx='12' cy='10' r='3'%3E%3C/circle%3E%3C/svg%3E") no-repeat center;
+                    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'%3E%3C/path%3E%3Ccircle cx='12' cy='10' r='3'%3E%3C/circle%3E%3C/svg%3E") no-repeat center;
+                    background-size: contain;
                 }
-                .pin-pulse {
+                .pin-pulse-v2 {
                     position: absolute;
-                    width: 80px;
-                    height: 80px;
-                    background-color: rgba(139, 30, 30, 0.3);
+                    width: 100px;
+                    height: 100px;
+                    background: rgba(178, 34, 34, 0.4);
                     border-radius: 50%;
-                    animation: pulse 2s infinite;
+                    animation: pulse-ring 2s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955);
                 }
-                @keyframes pulse {
-                    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
-                    100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+                @keyframes pulse-ring {
+                    0% { transform: scale(0.3); opacity: 0.8; }
+                    100% { transform: scale(1.5); opacity: 0; }
                 }
 
-                /* Subtle glare effect on map */
-                .map-image-wrapper::after {
+                /* Dark Overlay for map */
+                .map-image-container::after {
                     content: '';
                     position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%);
+                    inset: 0;
+                    background: radial-gradient(circle at center, transparent 30%, rgba(26, 20, 18, 0.3) 100%);
                     pointer-events: none;
                 }
             `}</style>
