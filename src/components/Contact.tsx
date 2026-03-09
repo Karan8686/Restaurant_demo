@@ -55,7 +55,10 @@ const Contact: React.FC = () => {
                             </div>
                         </div>
 
-                        <button className="directions-btn">
+                        <button
+                            className="directions-btn"
+                            onClick={() => window.open('https://maps.app.goo.gl/dTFYvzA7KJ1DorbB9', '_blank')}
+                        >
                             Get Directions
                         </button>
                     </motion.div>
