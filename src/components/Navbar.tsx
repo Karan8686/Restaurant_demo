@@ -1,52 +1,52 @@
 import React, { useEffect, useState } from 'react';
 
 interface NavbarProps {
-    onScrollTo: (id: string) => void;
+  onScrollTo: (id: string) => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onScrollTo }) => {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    const links = ['Menu', 'Gallery', 'About', 'Contact'];
+  const links = ['Menu', 'Gallery', 'About', 'Reviews', 'Contact'];
 
-    return (
-        <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-            <div className="navbar-container">
-                <div className="logo" onClick={() => onScrollTo('hero')}>
-                    Vrindavan
-                </div>
+  return (
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+      <div className="navbar-container">
+        <div className="logo" onClick={() => onScrollTo('hero')}>
+          Vrindavan
+        </div>
 
-                <div className="nav-links">
-                    {links.map((link) => (
-                        <button
-                            key={link}
-                            className={`nav-link ${hoveredLink === link ? 'hovered' : ''}`}
-                            onMouseEnter={() => setHoveredLink(link)}
-                            onMouseLeave={() => setHoveredLink(null)}
-                            onClick={() => onScrollTo(link.toLowerCase())}
-                        >
-                            {link}
-                        </button>
-                    ))}
-                </div>
+        <div className="nav-links">
+          {links.map((link) => (
+            <button
+              key={link}
+              className={`nav-link ${hoveredLink === link ? 'hovered' : ''}`}
+              onMouseEnter={() => setHoveredLink(link)}
+              onMouseLeave={() => setHoveredLink(null)}
+              onClick={() => onScrollTo(link.toLowerCase())}
+            >
+              {link}
+            </button>
+          ))}
+        </div>
 
-                <div className="nav-actions">
-                    <button className="book-btn" onClick={() => onScrollTo('contact')}>
-                        Book Table
-                    </button>
-                </div>
-            </div>
+        <div className="nav-actions">
+          <button className="book-btn" onClick={() => onScrollTo('contact')}>
+            Book Table
+          </button>
+        </div>
+      </div>
 
-            <style>{`
+      <style>{`
         .navbar {
           position: fixed;
           top: 0;
@@ -116,8 +116,8 @@ const Navbar: React.FC<NavbarProps> = ({ onScrollTo }) => {
           color: var(--color-bg);
         }
       `}</style>
-        </nav>
-    );
+    </nav>
+  );
 };
 
 export default Navbar;
